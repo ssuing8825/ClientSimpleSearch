@@ -114,7 +114,7 @@ namespace ClientSimpleSearch.Business
         public List<string> ExecuteQuery(string query)
         {
             List<string> list = null;
-            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientLocate"].ConnectionString);
+            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientSearch"].ConnectionString);
 
             using (connection)
             {
@@ -125,9 +125,10 @@ namespace ClientSimpleSearch.Business
 
                 if (reader.HasRows)
                 {
+                    list = new List<string>();
                     while (reader.Read())
                     {
-                        list.Add(reader.GetString(0));
+                        list.Add(reader.GetString(2));
                     }
                 }
                 else

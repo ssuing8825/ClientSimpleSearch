@@ -13,8 +13,24 @@ namespace ClientSimpleSearch.Test
 
             SearchHelper helper = new SearchHelper();
             Console.WriteLine(helper.CreateQuery("Fred", "Name"));
+        }
 
+        [TestMethod]
+        public void ExecuteQuery()
+        {
+
+            SearchHelper helper = new SearchHelper();
+            Console.WriteLine(helper.ExecuteQuery("SELECT top 1 LastName FROM [People]"));
 
         }
+        [TestMethod]
+        public void ExecuteFTSQuery()
+        {
+
+            SearchHelper helper = new SearchHelper();
+            var query = helper.CreateQuery("Marc", "Name");
+            Console.WriteLine(helper.ExecuteQuery(query)[0]);
+        }
+
     }
 }
