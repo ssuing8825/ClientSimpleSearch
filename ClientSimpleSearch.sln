@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSimpleSearch.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSimpleSearch.DocumentCreatorProcessor", "src\ClientSimpleSearch.DocumentCreatorProcessor\ClientSimpleSearch.DocumentCreatorProcessor.csproj", "{F37645F7-782A-4B09-942A-9EDA0A0CABE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSimpleSearch.GraphCreatorProcessor", "src\ClientSimpleSearch.GraphCreatorProcessor\ClientSimpleSearch.GraphCreatorProcessor.csproj", "{8EFFC539-0501-4268-B176-4ADFE2537447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F37645F7-782A-4B09-942A-9EDA0A0CABE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F37645F7-782A-4B09-942A-9EDA0A0CABE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F37645F7-782A-4B09-942A-9EDA0A0CABE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFFC539-0501-4268-B176-4ADFE2537447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFFC539-0501-4268-B176-4ADFE2537447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFFC539-0501-4268-B176-4ADFE2537447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFFC539-0501-4268-B176-4ADFE2537447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

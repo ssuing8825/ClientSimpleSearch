@@ -7,6 +7,7 @@ using System.Globalization;
 using Irony.Interpreter.Ast;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 
 namespace ClientSimpleSearch.Business
@@ -14,6 +15,7 @@ namespace ClientSimpleSearch.Business
 
     //http://www.sqlservercentral.com/articles/Full-Text+Search+(2008)/64248/
     //http://tilt.carr.no/Post/1/full-text-searching-with-lucene-net
+    //http://www.google.com/help/cheatsheet.html.
 
 
 
@@ -107,6 +109,8 @@ namespace ClientSimpleSearch.Business
             sb.Append("SELECT top 50 Id, '' as PayloadXML, PayloadJSON ");
             sb.Append("FROM ClientDocuments ");
             sb.AppendFormat("WHERE CONTAINS({0}, '{1}' );", Columns(searchType), queryPredicate);
+
+            Debug.WriteLine(sb.ToString());
 
             return sb.ToString();
         }

@@ -23,5 +23,16 @@ namespace ClientSimpleSearch.Business
             var query = searchHelper.CreateQuery(queryTerms, searchType);
             return searchHelper.ExecuteQuery(query);
         }
+
+        public int GetTotalCount(string query, string searchType)
+        {
+            return 1;
+        }
+
+        public List<string> GetWords(string query, string searchType)
+        {
+            return new List<string> { "Bob", "Robert" };
+
+        }
     }
 }

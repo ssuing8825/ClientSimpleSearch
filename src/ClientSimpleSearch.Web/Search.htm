@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>GEICO-Client Locate</title>
+    <script src="Scripts/jquery-1.6.1.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.tmpl.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.highlight-3.js" type="text/javascript"></script>
+    <script src="Scripts/dateformater.js" type="text/javascript"></script>
+    <link href="Content/ladder.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+
+
+        $(function () {
+
+            $(document).ready(function () {
+                $("form input").keyup(function (event) {
+
+                    if ($('#searchOnClick').is(':checked') || event.keyCode == '13') {
+                        if (parseInt(event.keyCode) < '47' && event.keyCode != '13') {
+                            event.preventDefault();
+                            return;
+                        }
+
+                        var inputVal = $(this).val();
+                        var characterReg = /^\s*[a-zA-Z0-9.~*<>,\s]+\s*$/;
+                        if (characterReg.test(inputVal)) {
+                            $(this).submit();
+                        }
+
+                    }
+                });
+            });
+
+
+            $('form').submit(function () {
+       
+                $('#searchResults li').remove();
+
+                $.get(
+                    $(this).attr("action"),
+                    $(this).serialize(),
+                    function (value) {
+                        $("#searchTemplate").tmpl(value.people).appendTo("#searchResults");
+
+                        for (x in value.listofwords) {
+                            $('li').highlight(value.listofwords[x]);
+                        }
+
+
+                        if (value.totalPossible > 50)
+                        { $('#recordCount').text('About ' + value.totalPossible + ' results showing 50'); }
+                        else
+                        { $('#recordCount').text(value.people.length + ' results'); }
+
+                        $('#keywords').text('Searched for the following terms: ' + value.listofwords);
+
+                    },
+                    "json"
+                     );
+              
+                return false;
+            });
+
+
+
+        });
+
+        function getDate(data) {
+            var stripped = data.replace(/\/+Date\(([\d+-]+)\)\/+/, '$1')
+            stripped = stripped.replace("-0400", "")
+            var newDate = new Date(parseInt(stripped));
+            return newDate.format("mm/dd/yyyy");
+        }
+    </script>
+    <script id="searchTemplate" type="text/html">
+
+            <li class"clientItem"> 
+            <div class="client"><a href="Details\${ Id }">${ LastName }, ${ FirstName } </a> <label class="dob"> - ${getDate( DateOfBirth )} </label><br>
+                    <div>
+                        <ul style="width:300px">
+                           {{each Addresses}} <li>${ AddressLine1 } ${ City }, ${ State } ${ Zip }</li>{{/each}}
+                           </ul>
+                    </div>
+                    <div >
+                        <ul style="width:150px">{{each Phones}} <li> ${ PhoneType } - (${ AreaCode }) ${ LocalNumber }</li> {{/each}} </ul>
+                    </div>
+                    <div>
+                        <ul  style="width:150px">{{each PolicyKeys}} <li> ${ PolicyType } - ${ PolicyIdentifier}</li> {{/each}} </ul>
+                    </div>
+             </div>
+              <div class="clear">
+                </div>
+            </li>
+ 
+    </script>
+</head>
+<body>
+    <!-- Begin Wrapper -->
+    <div id="wrapperauto">
+        <!-- Begin Header -->
+        <div id="header">
+            <h2> GEICO - Client Search</h2>
+            <form method="get" action="api\search" id="searchAll" onsubmit="return false;">
+            <div class="searchField">
+                Search Terms:
+                <input class="searchBox" type="text" name="query" autocomplete="off" />
+            </div>
+            <input type="hidden" name="searchType" value="All" />
+            <div class="searchField">
+                Realtime
+                <input type="checkbox" id="searchOnClick" /></div>
+            </form>
+        </div>
+        <div class="keywords">
+            <label id="keywords" />
+        </div>
+        <div class="keywords">
+            <label id="recordCount" />
+        </div>
+        <div class="clear">
+        </div>
+        <div class="break" />
+        <div class="keywords">
+            <ul id="searchResults">
+            </ul>
+        </div>
+        <!-- End Footer -->
+    </div>
+    <!-- End Wrapper -->
+</body>
+</html>
