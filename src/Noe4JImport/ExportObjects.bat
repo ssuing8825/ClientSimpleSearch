@@ -1,1 +1,0 @@
-sqlcmd -S .\SQL2012 -d Preclone_Client -E -s"	" -W -Q "SELECT distinct [TechnicalObjectKey] FROM ObjectRelation" > C:\Users\Steven.Suing\Desktop\batch_importer_20\ObjectNodes.csv

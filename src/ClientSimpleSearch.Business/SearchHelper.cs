@@ -115,6 +115,13 @@ namespace ClientSimpleSearch.Business
             return sb.ToString();
         }
 
+        public void Connect()
+        {
+            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientSearch"].ConnectionString);
+
+            connection.Open();
+
+        }
         public List<string> ExecuteQuery(string query)
         {
             List<string> list = null;

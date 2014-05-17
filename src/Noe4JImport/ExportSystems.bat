@@ -1,1 +1,0 @@
-sqlcmd -S .\SQL2012 -d Preclone_Client -E -s"	" -W -Q "Select  ABS(ic.ClientId) , FirstName + '  ' + LastName as name ,'CLIENT' as Label, Client.ClientKey From IndividualClient ic inner join Client on Client.ClientId = ic.ClientId where FirstName is not null and LastName is not null" > C:\Users\Steven.Suing\Desktop\batch_importer_20\ClientNodes.csv

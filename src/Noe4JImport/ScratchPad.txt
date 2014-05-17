@@ -1,0 +1,21 @@
+Get-RabbitMQMessage -Name AISQueue -UserName guest -Password guest -Count 1 -Remove
+
+
+Import.bat C:\Users\Steven.Suing\Documents\Neo4j\ClientGraph test/ClientNodes.csv,test/SystemNodes.csv,test/ObjectNodes.csv test/MainRelations.csv,test/ObjectToSystemRel.csv
+
+Import.bat C:\Users\Steven.Suing\Documents\Neo4j\ClientGraph data/ClientNodes.csv,data/SystemNodes.csv,data/ObjectNodes.csv data/MainRelations.csv,data/ObjectToSystemRel.csv
+
+
+[System.Reflection.Assembly]::LoadFrom("C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\v2.3\bin\Microsoft.WindowsAzure.StorageClient.dll")
+
+
+$context = New-AzureStorageContext -StorageAccountName suingdev01  -StorageAccountKey NfvqNW+QUyLFLb/Tkru8+Wz/tGVqs5gGlcgq0PCgbOA0GsOdllmeqxmx3ZoZX24HRXkuJ0IcX/i/8+HDAwhB3Q==
+
+
+Set-AzureStorageBlobContent -Blob "ClientSearch.bak" -Container databackupcontainer -File "c:\ClientSearch.bak" -Context $context -Force
+
+
+Start-AzureStorageBlobCopy -SrcBlob "http://portalvhds1wqjbww28358j.blob.core.windows.net/vhds/SuingDev01-VS2013-Suing-2013-08-23.vhd" 
+-DestContext
+-DestBlob 
+-DestContainer $context

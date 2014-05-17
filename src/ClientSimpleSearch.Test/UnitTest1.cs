@@ -23,6 +23,14 @@ namespace ClientSimpleSearch.Test
             Console.WriteLine(helper.ExecuteQuery("SELECT top 1 LastName FROM [People]"));
 
         }
+
+        [TestMethod]
+        public void Connect()
+        {
+            SearchHelper helper = new SearchHelper();
+            helper.Connect();
+        }
+
         [TestMethod]
         public void ExecuteFTSQuery()
         {

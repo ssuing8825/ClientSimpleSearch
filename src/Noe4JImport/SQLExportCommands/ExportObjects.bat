@@ -1,0 +1,1 @@
+sqlcmd -S 10.0.0.4 -d Preclone_Client -U "Steve" -P "Steve" -s"	" -W -Q "SELECT distinct [TechnicalObjectKey], 'SOME_OBJECT' as Label FROM ObjectRelation order by [TechnicalObjectKey] set nocount on" > ObjectNodes.csv

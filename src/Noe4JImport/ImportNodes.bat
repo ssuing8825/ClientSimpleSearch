@@ -1,1 +1,0 @@
-Import.bat C:\Users\Steven.Suing\Documents\Neo4j\default.graphdb ClientNodes.csv

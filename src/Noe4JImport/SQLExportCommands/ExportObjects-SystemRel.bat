@@ -1,0 +1,1 @@
+sqlcmd -S 10.0.0.4 -d Preclone_Client -U "Steve" -P "Steve" -s"	" -W -Q "SELECT distinct objrel.TechnicalObjectKey, [lookup].ObjectSystem.Description, 'BELONGS_TO_SYSTEM' as REl FROM ObjectRelation objrel inner join [lookup].ObjectSystem on objrel.ObjectSystemId = [lookup].ObjectSystem.ObjectSystemId Order By objrel.TechnicalObjectKey set nocount on" > ObjecttoSystemRel.csv
