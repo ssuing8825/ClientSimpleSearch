@@ -20,3 +20,13 @@ Start-AzureStorageBlobCopy -SrcBlob "http://portalvhds1wqjbww28358j.blob.core.wi
 -DestBlob 
 -DestContainer $context
 
+http://www.apcjones.com/arrows/#
+
+/home/batchdownload
+
+
+sudo sh import.sh client.db ClientNodes.csv,SystemNodes.csv,ObjectNodes.csv MainRelations.csv,ObjecttoSystemRel.csv
+
+/home/batchdownload/client.db
+
+Cd ~
